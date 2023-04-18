@@ -19,12 +19,17 @@ app.use(cors({
 //   res.send('Hello World!')
 // });
 
-app.get('/artists', read.artists)
-app.get('/songs', read.songs)
+app.get('/api/artists', read.artists)
+app.get('/api/songs', read.songs)
 
 //Serve any file in the build folder
-const _dirname = dirname(fileURLToPath(import.meta.url));
-app.use(express.static(path.join(_dirname, '..', 'client', 'dist')));
+const directory = dirname(fileURLToPath(import.meta.url));
+app.use(express.static(path.join(directory, '..', 'client', 'dist')));
+
+//Grab any request that's not for API and route it to index for react-router-dom
+app.get(x => !x.startsWith('/api'), function (req, res) {
+  res.sendFile(path.join(directory, '..', 'client', 'dist', 'index.html'));
+});
 
 app.listen(port,() => {
   console.log(`Server Listening at http://localhost:${port}`);
