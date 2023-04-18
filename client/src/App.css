@@ -1,0 +1,56 @@
+.artist-card{
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  
+}
+.artist-image{
+  height: 200px;
+  width: 200px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.image-overlay{
+  position: absolute;
+  z-index: 3;
+  width: 200px;
+  height: 200px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  font-family: 'Quicksand', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.image-overlay--blur {
+  backdrop-filter: blur(2px);
+}
+
+
+.image-overlay > * {
+  transform: translateY(20px);
+  transition: transform 0.25s;
+}
+
+.image-overlay:hover {
+  opacity: 1;
+}
+
+.image-overlay:hover > * {
+  transform: translateY(0);
+}
+
+.artist-name {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.artist-age {
+  font-size: 1em;
+}
