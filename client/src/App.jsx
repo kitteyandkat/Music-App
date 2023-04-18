@@ -10,12 +10,12 @@ function App() {
  
 
   const fetchArtists = async () => {
-    const response = await fetch('http://localhost:3001/artists')
+    const response = await fetch(`${import.meta.env.VITE_API}/artists`)
     const data = await response.json()
     setArtistArray(data)
   }
   const fetchSongs = async () => {
-    const response = await fetch('http://localhost:3001/songs')
+    const response = await fetch(`${import.meta.env.VITE_API}/songs`)
     const data = await response.json()
     setSongArray(data)
   }
